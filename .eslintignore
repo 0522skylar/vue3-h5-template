@@ -1,0 +1,11 @@
+**/*.d.ts
+node_modules/
+typings/*
+.prettierrc.js
+.eslintrc.js
+vite.config.ts
+src/.eslintrc.js
+
+dist/*
+app/*
+logs/*
