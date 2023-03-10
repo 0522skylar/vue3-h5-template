@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import { createPinia } from 'pinia'
 
 export const vuexStore = createStore({
   state: {
@@ -18,4 +19,4 @@ export const vuexStore = createStore({
   actions: {},
   modules: {},
 })
-
+export const piniaStore = createPinia()

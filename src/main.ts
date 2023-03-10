@@ -15,6 +15,15 @@ import { vantPlugins } from './plugins/vant.js'
 //全局公共组件
 import components from './plugins/components.js'
 
+import Vconsole from 'vconsole'
+const configEnv = import.meta.env
+
+console.log(configEnv, 'env')
+if (['dev', 'test'].includes(configEnv.MODE)) {
+  new Vconsole()
+}
+
+
 createApp(App)
   .use(vuexStore)
   .use(piniaStore)
