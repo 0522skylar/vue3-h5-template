@@ -40,11 +40,11 @@ const handleTab = e => {
   // console.log(e,'etabs');
   switch (e.name) {
     case 0:
-      testData = testData
+      testData = testData.concat()
       console.log(testData, '000000000')
       break
     case 1:
-      testData = testData
+      testData = testData.concat()
       console.log(testData, '111111111')
       break
     case 2:
