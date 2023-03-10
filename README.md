@@ -32,6 +32,19 @@ Vant 中的样式默认使用`px`作为单位，如果需要使用`rem`单位，
 src/plugins/vant.ts
 
 
+## eslint
+
+vue一些eslint配置说明文档：
+https://eslint.vuejs.org/rules/
+
+自定义你的规则 中文手册:
+https://cloud.tencent.com/developer/chapter/12617
+
+## prettier
+
+官网：
+https://www.prettier.cn/docs/install.html
+
 ## 引入全局样式变量
 
 ```ts
@@ -87,19 +100,6 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import { vuexStore, piniaStore } from './store';
-
-// 移动端适配
-import 'lib-flexible/flexible.js';
-
-// 引入全局样式
-// import '@/assets/scss/index.scss';
-
-
-// 全局引入按需引入UI库 vant
-import { vantPlugins } from './plugins/vant.js';
-
-//全局公共组件
-import components from './plugins/components.js';
 
 createApp(App).use(vuexStore).use(piniaStore).use(router).use(vantPlugins).use(components).mount('#app');
 
@@ -157,10 +157,10 @@ export const usePiniaState = defineStore('pinia', ()=>{
 	const { getUserName } = piniaStore
 	
 
-        const handleBtn = () =>{
-            // pinia
-            getUserName('your name')
-        }
+  const handleBtn = () =>{
+      // pinia
+      getUserName('your name')
+  }
 
 </script>
 ```
@@ -193,13 +193,13 @@ const rootRoutes = Object.keys(mainRouterModules).map((path) => {
     const name = path.match(/\.\.\/layout\/(.*)\.vue$/)[1].toLowerCase();
     const routePath = `/${name}`;
     if (routePath === '/index') {
-		return {
-			path: '/',
-			name,
-			redirect: '/home',
-			component: mainRouterModules[path],
-			children: childRoutes
-		};
+      return {
+        path: '/',
+        name,
+        redirect: '/home',
+        component: mainRouterModules[path],
+        children: childRoutes
+      };
     }
 })
 
@@ -218,34 +218,34 @@ export default router
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
-   {
-        path: '/',
-        name: 'Index',
-        component: () => import ('@/layout/index.vue'),
-        redirect: '/home',
-        meta: {
-            title: '首页',
-            keepAlive:false
-        },
-        children: [
-            {
-                path: '/home',
-                name: 'Home',
-                component: () => import('@/views/home/Home.vue')
-            },
-            {
-                path: '/about',
-                name: 'About',
-                component: () => import('@/views/about/About.vue')
-            },
-        ]
-    },    
+  {
+    path: '/',
+    name: 'Index',
+    component: () => import ('@/layout/index.vue'),
+    redirect: '/home',
+    meta: {
+      title: '首页',
+      keepAlive:false
+    },
+    children: [
+      {
+        path: '/home',
+        name: 'Home',
+        component: () => import('@/views/home/Home.vue')
+      },
+      {
+        path: '/about',
+        name: 'About',
+        component: () => import('@/views/about/About.vue')
+      },
+    ]
+  },    
 ]
 
 
 const router = createRouter({
-    history: createWebHashHistory(),
-    routes,
+  history: createWebHashHistory(),
+  routes,
 });
 
 export default router

@@ -10,7 +10,6 @@ export default defineConfig(({ command, mode }) => {
   return {
     // 静态资源基础路径 base: './' || '',
     base: '',
-
     resolve: {
       alias: {
         // 配置src目录
@@ -28,14 +27,7 @@ export default defineConfig(({ command, mode }) => {
     ],
     server: {
       host: '0.0.0.0',
-      port: 3000,
-      // proxy: {
-      // 	'/api': {
-      // 		target: 'https://oapi.dingtalk.com',
-      // 		changeOrigin: true,
-      // 		rewrite: (path) => path.replace(/^\/api/, '') // 将匹配到的api替换成''
-      // 	}
-      // }
+      port: 3000
     },
   }
 })
