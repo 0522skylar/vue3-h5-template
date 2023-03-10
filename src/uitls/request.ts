@@ -1,14 +1,5 @@
-/**
- *  @author TalkTao
- * @description  接口封装
- */
 import { vuexStore } from '@/store/index'
-import axios, {
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-  Method,
-} from 'axios'
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 export interface AxiosResponseProps {
   code?: number
   status?: number
@@ -21,34 +12,31 @@ class HttpRequest {
   private readonly withCredentials: boolean
   private readonly timeout: number
   constructor() {
-    //获取当前环境的api地址
+    // 获取当前环境的api地址
     this.baseURL = import.meta.env.VITE_BASE_URL as string
     this.withCredentials = true
     this.timeout = 1000 * 60
   }
-  //初始化get请求
+  // 初始化get请求
   getInitConfig(): AxiosRequestConfig {
     return {
       baseURL: this.baseURL,
       withCredentials: this.withCredentials,
-      timeout: this.timeout,
+      timeout: this.timeout
     }
   }
   interceptors(instance: AxiosInstance) {
     // 定义存放请求接口数组
     let requestList = []
-    const setLoadingToFalse = response => {
+    const setLoadingToFalse = (response) => {
       requestList
-        .filter(
-          item =>
-            item.url == response.config.url &&
-            item.method == response.config.method
-        )
-        .forEach(item => (item.isLoading = false))
+        .filter((item) => item.url == response.config.url && item.method == response.config.method)
+        .forEach((item) => (item.isLoading = false))
 
-      //所有请求都加载完才让加载提示消失
-      if (requestList.every(item => !item.isLoading))
+      // 所有请求都加载完才让加载提示消失
+      if (requestList.every((item) => !item.isLoading)) {
         vuexStore.commit('changeIsLoading', false)
+      }
     }
 
     instance.interceptors.request.use(
@@ -60,27 +48,21 @@ class HttpRequest {
           if (requestList.length < 10) {
             requestList.unshift({ ...config, isLoading: true })
           } else {
-            requestList = [
-              ...requestList.slice(0, 9),
-              { ...config, isLoading: true },
-            ]
+            requestList = [...requestList.slice(0, 9), { ...config, isLoading: true }]
           }
           vuexStore.commit('changeIsLoading', true)
         }
         return config
       },
-      error => Promise.reject(error + '请求错误')
+      (error) => Promise.reject(error + '请求错误')
     )
 
     instance.interceptors.response.use(
-      response => {
+      (response) => {
         setLoadingToFalse(response)
         return response.data
       },
-      error => {
-        if (error.response.status == 301) {
-          console.error('验证码不是200')
-        }
+      (error) => {
         setLoadingToFalse(error)
         return Promise.reject(error.response?.data)
       }
