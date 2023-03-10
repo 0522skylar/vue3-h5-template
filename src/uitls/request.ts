@@ -79,6 +79,7 @@ class HttpRequest {
       },
       error => {
         if (error.response.status == 301) {
+          console.error('验证码不是200')
         }
         setLoadingToFalse(error)
         return Promise.reject(error.response?.data)
