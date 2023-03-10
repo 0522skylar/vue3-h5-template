@@ -3,6 +3,7 @@ node_modules/
 typings/*
 .prettierrc.js
 .eslintrc.js
+postcss.config.js
 vite.config.ts
 src/.eslintrc.js
 
