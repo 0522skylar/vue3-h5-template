@@ -12,7 +12,7 @@
 npm i
 
 npm run dev
-复制代码
+
 ```
 
 ## rem适配方案
@@ -40,10 +40,18 @@ https://eslint.vuejs.org/rules/
 自定义你的规则 中文手册:
 https://cloud.tencent.com/developer/chapter/12617
 
+```
+npm run eslint or yarn eslint
+```
+
 ## prettier
 
 官网：
 https://www.prettier.cn/docs/install.html
+
+```
+npm run prettier or yarn prettier
+```
 
 ## 引入全局样式变量
 

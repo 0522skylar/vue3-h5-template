@@ -2,25 +2,18 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 export const usePiniaState = defineStore('pinia', () => {
   const userName = ref('')
-  const getUserNmae = data => {
+  const isLoading = ref(false)
+
+  const getUserName = (data) => {
     userName.value = data
   }
-  return { userName, getUserNmae }
+  const setIsLoading = (data) => {
+    isLoading.value = data
+  }
+  return {
+    getUserName,
+    setIsLoading,
+    userName,
+    isLoading,
+  }
 })
-
-// export const usePiniaState = defineStore({
-//     id: 'textPinia',
-//     state: () => {
-//         return {
-//             userName: ''
-//         }
-//     },
-//     getters: {
-
-//     },
-//     actions: {
-//         getUserNmae(data) {
-//             this.userName = data
-//         }
-//     }
-// })
