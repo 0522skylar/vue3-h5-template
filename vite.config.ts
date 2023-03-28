@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import eslintPlugin from 'vite-plugin-eslint'
 import path from 'path'
 import styleImport, { VantResolve } from 'vite-plugin-style-import'
 
@@ -10,20 +11,28 @@ export default defineConfig(({ command, mode }) => {
   return {
     // 静态资源基础路径 base: './' || '',
     base: '',
+
     resolve: {
       alias: {
         // 配置src目录
         '@': path.resolve(__dirname, 'src'),
         // 导入其他目录
-        components: path.resolve(__dirname, 'components'),
-      },
+        components: path.resolve(__dirname, 'components')
+      }
     },
     plugins: [
       vue(),
       // 配置后，Vant各组件才生效
       styleImport({
         resolves: [VantResolve()],
-      }),
+        libs: [
+          {
+            libraryName: 'vant',
+            esModule: true,
+            resolveStyle: name => `../es/${name}/style`
+          }
+        ]
+      })
     ],
     server: {
       host: '0.0.0.0',

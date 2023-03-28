@@ -1,7 +1,3 @@
-/**
- *  @author TalkTao
- * @description  按需引入Vant
- */
 import {
   Button,
   Tabbar,
@@ -46,8 +42,9 @@ const pluginsVant = [
 ]
 export const vantPlugins = {
   install: function (vm) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     pluginsVant.forEach((item: any) => {
       vm.component(item.name, item)
     })
-  },
+  }
 }
