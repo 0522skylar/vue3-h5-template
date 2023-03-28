@@ -10,7 +10,7 @@ ADD package.json package-lock.json /code
 
 RUN yarn
 RUN yarn build
-RUN yarn start
+# RUN yarn start
 
 
 
