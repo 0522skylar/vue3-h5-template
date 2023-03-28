@@ -10,7 +10,7 @@
     <br />
     <br />
     <van-button type="primary" @click="testPop">测试Popup</van-button>
-    <Popup :showPopup="showPop" :optionsList="list" @setShowPopup="setShowPopup" />
+    <!-- <Popup :showPopup="showPop" :optionsList="list" @setShowPopup="setShowPopup" /> -->
   </div>
 </template>
 
@@ -19,10 +19,9 @@ import { ref } from 'vue'
 import { Toast } from 'vant'
 import { vuexStore } from '@/store/index'
 import RequestLoading from '@/components/interactions/RequestLoading.vue'
-import Popup from '@/components/dropdown/Popup.vue'
+// import Popup from '@/components/dropdown/Popup.vue'
 
 export default {
-  components: Popup,
   setup() {
     const count = ref(0)
     const loading = ref(false)
