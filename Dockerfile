@@ -8,14 +8,3 @@ ADD . /code
 # 如何将项目跑起来
 ADD package.json package-lock.json /code
 
-RUN npm install
-RUN npm run build
-RUN npm start
-
-
-ADD . /code
-
-RUN npm run build 
-
-# 选择更小体积的基础镜像
-FROM nginx:alpine
