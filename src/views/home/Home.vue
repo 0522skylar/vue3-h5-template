@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref, toRefs } from 'vue'
 import { getTest } from '@/api/home'
+import { getOrder } from '@/api/orders'
 import logo from '@/assets/logo.png'
+import axios from 'axios'
 
 const list = ref([]);
 const loading = ref(false);
@@ -27,11 +29,15 @@ const onLoad = () => {
 
 // 请求真实数据
 const getTestData = async () => {
-  let params = {
-    modules: 'statisGradeCityDetail',
-  }
-  const result = await getTest(params)
-  console.log(result)
+  // let params = {
+  //   modules: 'statisGradeCityDetail',
+  // }
+  const result = await getTest()
+  // const result = await axios.get('https://http-nodejs-production-a46a.up.railway.app/countries')
+  console.log(result, '请求1')
+
+  const test = await getOrder()
+  console.log(test, '请求2')
 }
 
 onMounted(() => {

@@ -1,6 +1,7 @@
 import { apiUrl } from '@/const/api'
-import axiosInstance, { AxiosResponseProps } from '@/uitls/request'
+import { axiosTest } from '@/uitls'
 
+// 在axios基础上进行封装
 export const getTest = (params?: any) => {
-  return axiosInstance.get(apiUrl.TEST_PROXY, { params: params || {} })
+  return axiosTest.get(apiUrl.TEST_PROXY)
 }
