@@ -1,9 +1,9 @@
 {
-  "name": "vue-ts-h5-template",
+  "name": "vue-h5-template",
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --mode dev",
+    "dev": "vite --mode dev --open",
     "start": "vite --mode dev",
     "build": "vite build",
     "build:dev": "vite build --mode dev -c vite.config.ts",
