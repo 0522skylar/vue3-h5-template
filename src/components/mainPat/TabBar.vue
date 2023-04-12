@@ -34,7 +34,11 @@ const onChange = value => {
 
 <template>
   <div>
-    <van-tabbar fixed route v-model="active" @change="onChange">
+    <van-tabbar fixed
+      route
+      v-model="active"
+      @change="onChange"
+      active-color="#ee0a24">
       <van-tabbar-item
         v-for="(item, index) in props.data"
         :to="item.to"

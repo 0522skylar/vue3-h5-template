@@ -28,7 +28,8 @@ const { loadedText, isLoading } = useLoading() as any
     <div
       class="position-absolute start-50 translate-middle loadingBox text-center"
     >
-      <LoadingIcon width="86" height="86" class="loadingIcon" />
+      <!-- <LoadingIcon width="86" height="86" class="loadingIcon" /> -->
+      <van-loading color="#fff" />
       <div class="text-white text-center mt-2 fs-4 h-25">{{ loadedText }}</div>
     </div>
   </div>

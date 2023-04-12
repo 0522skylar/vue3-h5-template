@@ -31,13 +31,8 @@ const handleBtn = () => {
 <template>
   <div class="about">
     <CustomHeader title="我的" />
-    <div class="wrapper">
-      <div class="list flex-center py-8 flex-column">
-        <span class="logo">
-          <van-image width="150" :src="logo" />
-        </span>
-        <span class="logo fs-1 py-3 opacity-75">VUE3 H5开发模板</span>
-      </div>
+    <div class="wrapper fs-4">
+      我的页面
     </div>
   </div>
 </template>
