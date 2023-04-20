@@ -10,7 +10,6 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CustomHeader: typeof import('./src/components/mainPat/CustomHeader.vue')['default']
-    LoadingIcon: typeof import('./src/components/svgIcon/LoadingIcon.vue')['default']
     RequestLoading: typeof import('./src/components/interactions/RequestLoading.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
