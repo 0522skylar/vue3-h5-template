@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref, toRefs } from 'vue'
-import { getTest } from '@/api/home'
-import { getOrder } from '@/api/orders'
+// import { getTest } from '@/api/home'
+// import { getOrder } from '@/api/orders'
 import logo from '@/assets/logo.png'
 import axios from 'axios'
+import { resolve } from 'node:path/win32';
+import { rejects } from 'node:assert';
 
 const list = ref([]);
 const loading = ref(false);
@@ -27,17 +29,32 @@ const onLoad = () => {
   }, 1000);
 };
 
+const simulationApi = () => {
+  return new Promise((resolve, rejects) => {
+    try {
+      setTimeout(() => {
+      resolve({
+        data: {
+          hello: 'hello, nice to meet you!'
+        }
+      })
+    }, 1000)
+    } catch (err) {
+      rejects(err)
+    }
+  })
+}
 // 请求真实数据
 const getTestData = async () => {
   // let params = {
   //   modules: 'statisGradeCityDetail',
   // }
-  const result = await getTest()
+  const result = await simulationApi()
   // const result = await axios.get('https://http-nodejs-production-a46a.up.railway.app/countries')
   console.log(result, '请求1')
 
-  const test = await getOrder()
-  console.log(test, '请求2')
+  // const test = await getOrder()
+  // console.log(test, '请求2')
 }
 
 onMounted(() => {
